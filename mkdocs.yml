@@ -1,4 +1,4 @@
-site_name: Ioannis Papaspyridis — Projects & Notes
+site_name: Ioannis Papaspyridis
 site_description: Personal site built with Material for MkDocs
 site_author: Ioannis Papaspyridis
 site_url: https://yiakonale.github.io/website/
@@ -12,6 +12,8 @@ theme:
   features:
     - navigation.tabs
     - navigation.top
+    - navigation.sections
+    - navigation.expand
     - content.code.copy
     - content.code.annotate
     - search.highlight
@@ -36,6 +38,7 @@ plugins:
   - search
   - minify:
       minify_html: true
+  - include-markdown
 
 markdown_extensions:
   - admonition

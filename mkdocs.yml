@@ -1,0 +1,48 @@
+site_name: Ioannis Papaspyridis — Projects & Notes
+site_description: Personal site built with Material for MkDocs
+site_author: Ioannis Papaspyridis
+site_url: https://yiakonale.github.io/website/
+
+theme:
+  name: material
+  palette:
+    - scheme: default
+      primary: indigo
+      accent: pink
+  features:
+    - navigation.tabs
+    - navigation.top
+    - content.code.copy
+    - content.code.annotate
+    - search.highlight
+    - search.share
+
+nav:
+  - Home: index.md
+  - Projects: projects.md
+  - About: about.md
+
+plugins:
+  - search
+  - minify:
+      minify_html: true
+
+markdown_extensions:
+  - admonition
+  - codehilite
+  - toc:
+      permalink: true
+  - pymdownx.details
+  - pymdownx.superfences
+  - pymdownx.tasklist
+  - pymdownx.highlight
+  - pymdownx.inlinehilite
+  - pymdownx.emoji
+  - pymdownx.tabbed
+
+extra:
+  social:
+    - icon: fontawesome/brands/github
+      link: https://github.com/<your-username>
+    - icon: fontawesome/brands/linkedin
+      link: https://linkedin.com/in/<your-handle>

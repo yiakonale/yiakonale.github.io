@@ -1,15 +1,27 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
     <url>
-         <loc>https://yiakonale.github.io/website/</loc>
+         <loc>https://yiakonale.github.io/</loc>
          <lastmod>2025-10-30</lastmod>
     </url>
     <url>
-         <loc>https://yiakonale.github.io/website/about/</loc>
+         <loc>https://yiakonale.github.io/about/</loc>
          <lastmod>2025-10-30</lastmod>
     </url>
     <url>
-         <loc>https://yiakonale.github.io/website/projects/</loc>
+         <loc>https://yiakonale.github.io/projects/</loc>
+         <lastmod>2025-10-30</lastmod>
+    </url>
+    <url>
+         <loc>https://yiakonale.github.io/blog/first-post/</loc>
+         <lastmod>2025-10-30</lastmod>
+    </url>
+    <url>
+         <loc>https://yiakonale.github.io/projects/high-speed-photography-v1/</loc>
+         <lastmod>2025-10-30</lastmod>
+    </url>
+    <url>
+         <loc>https://yiakonale.github.io/projects/ultrasonic-levitator/</loc>
          <lastmod>2025-10-30</lastmod>
     </url>
 </urlset>

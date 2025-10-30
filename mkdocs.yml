@@ -19,10 +19,9 @@ theme:
     - search.highlight
     - search.share
 
-# Placeholder Projects list; workflow will inject project pages here
 nav:
   - Home: index.md
-  - Projects: []
+  - Projects: []  # Placeholder, workflow will inject landing page + individual project pages
   - About: about.md
   - Blog:
       - blog/first-post.md

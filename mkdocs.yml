@@ -21,7 +21,7 @@ theme:
 
 nav:
   - Home: index.md
-  - Projects:
+  - Projects: []
       # Project pages will be dynamically added by the workflow
       # The workflow generates 'projects_nav.yml' and merges it into the nav
   - About: about.md

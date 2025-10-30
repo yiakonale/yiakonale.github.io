@@ -5,3 +5,7 @@ projects:
   - name: "Ultrasonic Levitator"
     repo: "yiakonale/ultrasonic-levitator"
     branch: "main"
+    
+  - name: "Leidenfrost Maze"
+    file: docs/projects/leidenfrost.md   # Local markdown file
+    description: "Watch water solve a maze with the Leidenfrost effect."

@@ -15,22 +15,22 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      # 1️ Checkout the site repository
+      # 1️⃣ Checkout the site repository
       - name: Checkout main site
         uses: actions/checkout@v4
 
-      # 2️ Set up Python
+      # 2️⃣ Set up Python
       - name: Set up Python
         uses: actions/setup-python@v5
         with:
           python-version: '3.11'
 
-      # 3️ Install dependencies
+      # 3️⃣ Install dependencies
       - name: Install dependencies
         run: |
           pip install mkdocs-material mkdocs-minify-plugin pyyaml requests
 
-      # 4️ Fetch project READMEs, repo descriptions, generate nav and landing page
+      # 4️⃣ Fetch project READMEs, repo descriptions, generate nav and landing page
       - name: Fetch projects and generate landing page
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
@@ -59,7 +59,7 @@ jobs:
 
               print(f"Fetching {repo}...")
 
-              # 1️ Fetch README.md
+              # 1️⃣ Fetch README.md
               url = f"https://raw.githubusercontent.com/{repo}/{branch}/README.md"
               r_readme = requests.get(url, headers={'Authorization': f'token {os.getenv("GITHUB_TOKEN")}'}).text
 
@@ -83,15 +83,15 @@ jobs:
                   print(f"⚠️ Could not fetch README for {repo}")
                   content = f"# {name}\n\nNo README found."
 
-              # 2️ Fetch repo description from GitHub API
+              # 2️⃣ Fetch repo description from GitHub API
               api_url = f"https://api.github.com/repos/{repo}"
               r_info = requests.get(api_url, headers={'Authorization': f'token {os.getenv("GITHUB_TOKEN")}'}).json()
               description = r_info.get('description', 'No description provided.')
 
-              # 3️ Add to project nav
+              # 3️⃣ Add to project nav
               project_nav.append({name: f"projects/{filename}"})
 
-              # 4️ Add entry to landing page
+              # 4️⃣ Add entry to landing page
               landing_lines.append(f"## [{name}](projects/{filename})\n\n")
               landing_lines.append(f"{description}\n\n")
 
@@ -115,11 +115,11 @@ jobs:
               yaml.dump(mkdocs_cfg, f, sort_keys=False)
           PYCODE
 
-      # 5️ Build the site
+      # 5️⃣ Build the site
       - name: Build site
         run: mkdocs build --clean
 
-      # 6️ Deploy to GitHub Pages
+      # 6️⃣ Deploy to GitHub Pages
       - name: Deploy to GitHub Pages
         uses: peaceiris/actions-gh-pages@v4
         with:

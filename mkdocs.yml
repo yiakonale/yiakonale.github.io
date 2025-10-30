@@ -1,7 +1,7 @@
 site_name: Ioannis Papaspyridis
 site_description: Personal site built with Material for MkDocs
 site_author: Ioannis Papaspyridis
-site_url: https://yiakonale.github.io/website/
+site_url: https://yiakonale.github.io/
 
 theme:
   name: material
@@ -19,17 +19,11 @@ theme:
     - search.highlight
     - search.share
 
-site_name: Projects
-theme:
-  name: material
-  features:
-    - navigation.sections
-    - navigation.expand
-
 nav:
   - Home: index.md
   - Projects:
-      - !include projects_nav.yml
+      # Project pages will be dynamically added by the workflow
+      # The workflow generates 'projects_nav.yml' and merges it into the nav
   - About: about.md
   - Blog:
       - blog/first-post.md
@@ -38,7 +32,6 @@ plugins:
   - search
   - minify:
       minify_html: true
-  - include-markdown
 
 markdown_extensions:
   - admonition
@@ -56,6 +49,6 @@ markdown_extensions:
 extra:
   social:
     - icon: fontawesome/brands/github
-      link: https://github.com/<your-username>
+      link: https://github.com/yiakonale
     - icon: fontawesome/brands/linkedin
-      link: https://linkedin.com/in/<your-handle>
+      link: https://linkedin.com/in/ipapaspyridis

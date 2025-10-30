@@ -17,10 +17,20 @@ theme:
     - search.highlight
     - search.share
 
+site_name: Projects
+theme:
+  name: material
+  features:
+    - navigation.sections
+    - navigation.expand
+
 nav:
   - Home: index.md
-  - Projects: projects.md
+  - Projects:
+      - !include projects_nav.yml
   - About: about.md
+  - Blog:
+      - blog/first-post.md
 
 plugins:
   - search

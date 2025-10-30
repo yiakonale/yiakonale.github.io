@@ -1,0 +1,7 @@
+projects:
+  - name: "High Speed Photography V1"
+    repo: "yiakonale/high-speed-photography-v1"
+    branch: "main"
+  - name: "Ultrasonic Levitator"
+    repo: "yiakonale/ultrasonic-levitator"
+    branch: "main"

@@ -1,27 +1,78 @@
-name: Deploy MkDocs site
+name: Deploy MkDocs site (auto-sync projects)
+
+permissions:
+  contents: write
+  pages: write
+  id-token: write
 
 on:
   push:
-    branches:
-      - main  # deploy whenever you push to main
+    branches: [ main ]
+  workflow_dispatch:
+  repository_dispatch:
 
 jobs:
   deploy:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout code
+      - name: Checkout main site
         uses: actions/checkout@v4
 
       - name: Set up Python
         uses: actions/setup-python@v5
         with:
-          python-version: "3.x"
+          python-version: '3.11'
 
       - name: Install dependencies
         run: |
-          pip install mkdocs-material
-          pip install mkdocs-minify-plugin
+          pip install mkdocs-material mkdocs-minify-plugin pyyaml requests
+
+      - name: Fetch project READMEs
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          python3 <<'PYCODE'
+          import yaml, os, requests
+
+          os.makedirs('docs/projects', exist_ok=True)
+          with open('projects.yml', 'r') as f:
+              cfg = yaml.safe_load(f)
+
+          for proj in cfg.get('projects', []):
+              repo = proj['repo']
+              branch = proj.get('branch', 'main')
+              name = proj['name']
+              filename = repo.split('/')[-1] + '.md'
+
+              print(f"Fetching {repo}...")
+              url = f"https://raw.githubusercontent.com/{repo}/{branch}/README.md"
+              r = requests.get(url, headers={'Authorization': f'token {os.getenv("GITHUB_TOKEN")}'})
+              if r.status_code == 200:
+                  content = r.text
+                  if not content.startswith('#'):
+                      content = f"# {name}\n\n" + content
+                  with open(f'docs/projects/{filename}', 'w', encoding='utf-8') as out:
+                      out.write(content)
+              else:
+                  print(f"⚠️ Could not fetch {repo}: {r.status_code}")
+          PYCODE
+
+      - name: Generate dynamic project nav
+        run: |
+          echo "Generating dynamic nav..."
+          echo "" > projects_nav.yml
+          for f in docs/projects/*.md; do
+            title=$(basename "$f" .md | tr '-' ' ' | sed 's/\b\(.\)/\u\1/g')
+            echo "- \"$title\": ${f#docs/}" >> projects_nav.yml
+          done
+          cat projects_nav.yml
+
+      - name: Build site
+        run: mkdocs build --clean
 
       - name: Deploy to GitHub Pages
-        run: mkdocs gh-deploy --force
+        uses: peaceiris/actions-gh-pages@v4
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./site

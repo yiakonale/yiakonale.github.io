@@ -63,14 +63,14 @@ jobs:
               url = f"https://raw.githubusercontent.com/{repo}/{branch}/README.md"
               r_readme = requests.get(url, headers={'Authorization': f'token {os.getenv("GITHUB_TOKEN")}'}).text
 
-                # Fix image URLs (convert relative or blob URLs to raw URLs)
-                if r_readme:
-                    repo_path = f"https://raw.githubusercontent.com/{repo}/{branch}/"
-                    # Replace relative image paths (like ![](images/...))
-                    r_readme = r_readme.replace("](./", f"]({repo_path}")
-                    r_readme = r_readme.replace("](images/", f"]({repo_path}images/")
-                    # Replace GitHub blob links with raw links
-                    r_readme = r_readme.replace("github.com/", "raw.githubusercontent.com/").replace("/blob/", "/")
+              # Fix image URLs (convert relative or blob URLs to raw URLs)
+              if r_readme:
+                repo_path = f"https://raw.githubusercontent.com/{repo}/{branch}/"
+                # Replace relative image paths (like ![](images/...))
+                r_readme = r_readme.replace("](./", f"]({repo_path}")
+                r_readme = r_readme.replace("](images/", f"]({repo_path}images/")
+                # Replace GitHub blob links with raw links
+                r_readme = r_readme.replace("github.com/", "raw.githubusercontent.com/").replace("/blob/", "/")
 
 
               if r_readme:

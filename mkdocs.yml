@@ -19,11 +19,10 @@ theme:
     - search.highlight
     - search.share
 
+# Placeholder Projects list; workflow will inject project pages here
 nav:
   - Home: index.md
   - Projects: []
-      # Project pages will be dynamically added by the workflow
-      # The workflow generates 'projects_nav.yml' and merges it into the nav
   - About: about.md
   - Blog:
       - blog/first-post.md

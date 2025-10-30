@@ -27,7 +27,7 @@ jobs:
         run: |
           pip install mkdocs-material mkdocs-minify-plugin pyyaml requests
 
-      - name: Fetch project READMEs and generate nav
+      - name: Fetch project READMEs and update mkdocs nav
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
@@ -41,7 +41,11 @@ jobs:
           with open('projects.yml', 'r') as f:
               cfg = yaml.safe_load(f)
 
-          nav_entries = []
+          # Load mkdocs.yml
+          with open('mkdocs.yml', 'r', encoding='utf-8') as f:
+              mkdocs_cfg = yaml.safe_load(f)
+
+          project_nav = []
 
           for proj in cfg.get('projects', []):
               repo = proj['repo']
@@ -52,21 +56,29 @@ jobs:
               print(f"Fetching {repo}...")
               url = f"https://raw.githubusercontent.com/{repo}/{branch}/README.md"
               r = requests.get(url, headers={'Authorization': f'token {os.getenv("GITHUB_TOKEN")}'}).text
-              
+
               if r:
                   content = r
                   if not content.startswith('#'):
                       content = f"# {name}\n\n" + content
                   with open(f'docs/projects/{filename}', 'w', encoding='utf-8') as out:
                       out.write(content)
-                  # Add to nav
-                  nav_entries.append(f"- \"{name}\": projects/{filename}")
+                  project_nav.append({name: f"projects/{filename}"})
               else:
                   print(f"⚠️ Could not fetch {repo}")
 
-          # Write nav directly to projects_nav.yml
-          with open('projects_nav.yml', 'w', encoding='utf-8') as navfile:
-              navfile.write('\n'.join(nav_entries))
+          # Inject project pages into nav
+          new_nav = []
+          for item in mkdocs_cfg['nav']:
+              if 'Projects' in item:
+                  new_nav.append({'Projects': project_nav})
+              else:
+                  new_nav.append(item)
+          mkdocs_cfg['nav'] = new_nav
+
+          # Write back modified mkdocs.yml
+          with open('mkdocs.yml', 'w', encoding='utf-8') as f:
+              yaml.dump(mkdocs_cfg, f, sort_keys=False)
           PYCODE
 
       - name: Build site

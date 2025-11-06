@@ -6,18 +6,12 @@ site_url: https://yiakonale.github.io/
 theme:
   name: material
   palette:
-    - scheme: default
-      primary: indigo
-      accent: pink
-  features:
-    - navigation.tabs
-    - navigation.top
-    - navigation.sections
-    - navigation.expand
-    - content.code.copy
-    - content.code.annotate
-    - search.highlight
-    - search.share
+    - scheme: slate  # base dark theme
+      primary: custom
+      accent: custom
+    
+extra_css:
+  - styles/custom-colors.css
 
 nav:
   - Home: index.md

@@ -1,7 +1,6 @@
 theme:
-  show_toc: false  
   features:
-    - navigation.sections 
+    - toc.integrate
 projects:
   - name: "High Speed Photography V1"
     repo: "yiakonale/high-speed-photography-v1"

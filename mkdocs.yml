@@ -42,6 +42,7 @@ nav:
 #  - About: about.md
   - Blog:
       - blog/first-post.md
+#      - blog/EMI.md
 
 plugins:
   - search

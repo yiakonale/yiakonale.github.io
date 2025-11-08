@@ -6,12 +6,22 @@ site_url: https://yiakonale.github.io/
 theme:
   name: material
   palette:
-    - scheme: slate  # base dark theme
+    - scheme: slate        # Dark mode (default)
       primary: custom
       accent: custom
-    
+      toggle:
+        icon: material/white-balance-sunny
+        name: Switch to light mode
+    - scheme: default      # Light mode
+      primary: custom
+      accent: custom
+      toggle:
+        icon: material/weather-night
+        name: Switch to dark mode
+
 extra_css:
   - styles/custom-colors.css
+
 
 nav:
   - Home: index.md

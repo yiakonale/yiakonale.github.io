@@ -1,8 +1,5 @@
----
-hide:
-  - navigation
----
-
+theme:
+  show_toc: false  
 projects:
   - name: "High Speed Photography V1"
     repo: "yiakonale/high-speed-photography-v1"

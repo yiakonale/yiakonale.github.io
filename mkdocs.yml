@@ -4,7 +4,7 @@ site_author: Ioannis Papaspyridis
 site_url: https://yiakonale.github.io/
 repo_url: https://github.com/yiakonale
 repo_name: github.com/yiakonale
-
+  
 theme:
   name: material
   palette:
@@ -22,6 +22,7 @@ theme:
         name: Switch to dark mode
   features:
     # --- Navigation behavior ---
+    - navigation.top
     - navigation.tabs              # Show top-level items as tabs on top
 #    - navigation.tabs.sticky       # Keep tabs visible when scrolling
 #    - navigation.sections          # Show child pages grouped under section tabs
@@ -36,9 +37,9 @@ extra_css:
   - styles/custom-colors.css
 
 nav:
-  - Home: index.md
+  - About: index.md
   - Projects: projects.md
-  - About: about.md
+#  - About: about.md
   - Blog:
       - blog/first-post.md
 

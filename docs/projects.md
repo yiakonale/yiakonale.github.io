@@ -1,3 +1,9 @@
+---
+hide:
+  - navigation
+  - toc
+---
+
 # Projects
 
 Here are a few of my ongoing or completed projects:

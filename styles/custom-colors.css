@@ -16,3 +16,21 @@
 [data-md-color-scheme="slate"] a:hover {
   color: #ffb733;
 }
+
+[data-md-color-scheme="default"] {
+  --md-default-bg-color: #fdfaf6;        /* Warm off-white background */
+  --md-default-fg-color: #222222;        /* Deep neutral text */
+  --md-primary-fg-color: #ffa200;        /* Warm orange accent */
+  --md-accent-fg-color: #ffa200;
+  
+  /* Subtle contrast tones */
+  --md-code-bg-color: #f4efe9;
+  --md-code-fg-color: #d17f00;
+  --md-footer-bg-color: #f1ede9;
+  --md-typeset-a-color: #e08900;
+}
+
+/* Hover tweak for links in light mode */
+[data-md-color-scheme="default"] a:hover {
+  color: #b56c00;
+}

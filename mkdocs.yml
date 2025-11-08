@@ -18,10 +18,20 @@ theme:
       toggle:
         icon: material/weather-night
         name: Switch to dark mode
+  features:
+    # --- Navigation behavior ---
+    - navigation.tabs              # Show top-level items as tabs on top
+#    - navigation.tabs.sticky       # Keep tabs visible when scrolling
+#    - navigation.sections          # Show child pages grouped under section tabs
+    - toc.integrate                # Move page index (table of contents) into main content column
+#    - header.autohide              # (optional) hides header on scroll down, reappears on scroll up
+    - content.code.copy            # Add copy buttons on code blocks
+    - content.code.annotate        # Enable code annotations
+    - search.highlight
+    - search.share
 
 extra_css:
   - styles/custom-colors.css
-
 
 nav:
   - Home: index.md
@@ -38,8 +48,8 @@ plugins:
 markdown_extensions:
   - admonition
   - codehilite
-  - toc:
-      permalink: true
+  - toc
+#      permalink: true
   - pymdownx.details
   - pymdownx.superfences
   - pymdownx.tasklist

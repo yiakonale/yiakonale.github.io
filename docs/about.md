@@ -1,3 +1,5 @@
+<!-- this page is to be added back in the index once the site is more developed -->
+
 # About
 
 Hi! I'm Ioannis Papaspyridis.  

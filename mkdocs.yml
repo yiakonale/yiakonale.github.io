@@ -41,8 +41,8 @@ nav:
   - Projects: projects.md
 #  - About: about.md
   - Blog:
-      - blog/first-post.md
-#      - blog/EMI.md
+      - blog/1_first-post.md
+      - blog/2_about-me.md
 
 plugins:
   - search

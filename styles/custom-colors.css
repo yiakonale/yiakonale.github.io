@@ -34,3 +34,8 @@
 [data-md-color-scheme="default"] a:hover {
   color: #b56c00;
 }
+
+img[style*="float: right"] {
+  max-width: 40%;
+  height: auto;
+}

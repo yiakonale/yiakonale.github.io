@@ -3,19 +3,22 @@ hide:
   - navigation
   - toc
 ---
+
+<!-- -->
+<figure style="float: right; clear: right; width: 350px; margin-left: 40px; margin-bottom: 15px; text-align: center;">
+  <img src="media/headshot.jpg" alt="headshot" style="width: 100%; border-radius: 4px;">
+</figure>
+
 <!--
 <figure style="float: right; clear: right; width: 350px; margin-left: 40px; margin-bottom: 15px; text-align: center;">
-  <img src="media/yosemite.jpg" alt="yosemite" style="width: 100%; border-radius: 8px;">
+  <img src="media/headshot.jpg" alt="headshot" style="width: 100%; border-radius: 4px;">
   <figcaption style="font-size: 0.9em; color: #aaa;">Yosemite National Park, California</figcaption>
 </figure>
 -->
-<figure style="float: right; clear: right; width: 350px; margin-left: 40px; margin-bottom: 15px; text-align: center;">
-  <img src="media/headshot.jpg" alt="headshot" style="width: 100%; border-radius: 2px;">
-</figure>
 
 # Welcome 👋
 
-My name is Ioannis, I'm a 4th year **Electrical Engineering** (B.Eng) student with a double minor is Statistics and Business at McMaster University, graduating in **April 2027**.
+My name is Ioannis, I'm a 4th year **Electrical Engineering** (B.Eng) student with a double minor is Statistics and Business at McMaster University. Graduating **April 2027**.
 
 → [Project Portfolio](https://yiakonale.github.io/projects/)
 

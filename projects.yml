@@ -5,9 +5,14 @@ projects:
   - name: "High Speed Photography V1"
     repo: "yiakonale/high-speed-photography-v1"
     branch: "main"
+    
   - name: "Ultrasonic Levitator"
     repo: "yiakonale/ultrasonic-levitator"
     branch: "main"
+    
+  - name: "PCB Designs"
+    file: docs/projects/pcb.md   # Local markdown file
+    description: "Current and past PCB designs."
     
   - name: "Leidenfrost Maze"
     file: docs/projects/leidenfrost.md   # Local markdown file

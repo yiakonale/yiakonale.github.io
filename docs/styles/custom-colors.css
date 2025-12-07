@@ -39,3 +39,24 @@ img[style*="float: right"] {
   max-width: 40%;
   height: auto;
 }
+
+/* Default: image floats right on desktop 
+.float-right {
+  float: right;
+  clear: right;
+  width: 350px;
+  margin-left: 40px;
+  margin-bottom: 15px;
+  text-align: center;
+}
+*/
+/* On small screens, remove float and expand
+@media screen and (max-width: 768px) {
+  .float-right {
+    float: none;
+    display: block;
+    width: 100%;
+    margin: 20px 0;
+  }
+}
+*/

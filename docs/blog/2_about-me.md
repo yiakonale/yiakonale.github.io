@@ -1,11 +1,11 @@
 <figure style="float: right; clear: right; width: 350px; margin-left: 40px; margin-bottom: 15px; text-align: center;">
   <img src="../../media/kennedy.jpg" alt="kennedy meadows" style="width: 100%; border-radius: 4px;">
-  <figcaption style="font-size: 0.9em; color: #aaa;">Kennedy Meadows, California</figcaption>
+  <figcaption style="font-size: 0.9em; color: #aaa;">Kennedy Meadows, Stanislaus National Forest, California</figcaption>
 </figure>
 
 # About Me
 
-I'm an EE undergrad studying in Hamilton, Canada. Originally from Athens, Greece, I moved to Canada to pursue my studies. My interest in power electronics started when I was a kid visiting science museums and watching Tesla coils make huge arcs, and I always wondered how they worked. Since high school, I've been doing various electronics projects as a hobby and constantly experimenting with new ideas.
+I'm an EE undergrad studying in Hamilton, Canada. Originally from Athens, Greece, I moved to Canada to pursue my studies. My interest in electronics started when I was a kid visiting science museums and watching Tesla coils make huge arcs, and I always wondered how they worked. Since high school, I've been doing various electronics projects as a hobby and constantly experimenting with new ideas.
 
 Later in high school, I became interested in physics and chemistry and seriously considered pursuing a degree in theoretical physics. Around that time, I started watching electronics videos online and wanted to replicate many of the experiments I saw there, so I decided to learn PCB design and started reading more about circuits. I spent many hours of my free time using an old soldering iron to salvage components from old TVs and appliances, with the hope of reusing them in later projects. This helped me understand how some of these circuits work and become familiar with the different types of electronics. I found that I was particularly drawn to large components (inductors and transformers), which usually happened to be part of some power converter. Eventually, I started making my own projects, starting with none other than the humble Tesla coil. I also became accustomed to some of the more prominent aspects of hardware engineering, like designing a circuit that doesn't work at all and spending hours locating and fixing a poor solder joint. Naturally, this pushed me toward choosing EE as my major.
 

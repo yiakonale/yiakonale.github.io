@@ -40,7 +40,7 @@ nav:
   - About: index.md
   - Projects: projects.md
 #  - About: about.md
-  - Test: projects/pcb.md #COMMENT OUT BEFORE PUSHING
+#  - Test: projects/pcb.md #COMMENT OUT BEFORE PUSHING
   - Blog:
       - Hello World: blog/1_first-post.md
       - About Me: blog/2_about-me.md

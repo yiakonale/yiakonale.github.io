@@ -33,6 +33,15 @@ jobs:
         run: |
           python3 <<'PYCODE'
           import yaml, os, requests, textwrap
+          from datetime import datetime
+
+          def human_date(iso):
+            """Convert ISO datetime '2025-01-15T14:22:33Z' -> 'January 15, 2025'"""
+            try:
+              dt = datetime.fromisoformat(iso.replace("Z", "+00:00"))
+              return dt.strftime("%B %d, %Y")
+            except:
+              return iso
 
           os.makedirs('docs/projects', exist_ok=True)
 
@@ -45,7 +54,9 @@ jobs:
           for proj in cfg.get('projects', []):
               name = proj.get('name', 'Unnamed Project')
               filename = None
-              description = "No description provided."
+              description = proj.get('description', 'No description provided.')
+              status = proj.get('status', 'Unknown')
+              last_updated = proj.get('last_updated', None)
 
               # --- Repo-based projects ---
               if 'repo' in proj:
@@ -56,10 +67,12 @@ jobs:
 
                   # Fetch README
                   url = f"https://raw.githubusercontent.com/{repo}/{branch}/README.md"
-                  r_readme = requests.get(url, headers={'Authorization': f'token {os.getenv("GITHUB_TOKEN")}'}).text
+                  r_readme = requests.get(
+                      url,
+                      headers={'Authorization': f'token {os.getenv("GITHUB_TOKEN")}'}
+                  ).text
 
                   if r_readme:
-                      # Fix relative paths and GitHub blob URLs
                       repo_path = f"https://raw.githubusercontent.com/{repo}/{branch}/"
                       r_readme = r_readme.replace("](./", f"]({repo_path}")
                       r_readme = r_readme.replace("](images/", f"]({repo_path}images/")
@@ -71,12 +84,19 @@ jobs:
                       with open(f'docs/projects/{filename}', 'w', encoding='utf-8') as out:
                           out.write(r_readme)
 
-                  # Fetch GitHub repo description
+                  # Repo metadata (description + last updated)
                   api_url = f"https://api.github.com/repos/{repo}"
-                  r_info = requests.get(api_url, headers={'Authorization': f'token {os.getenv("GITHUB_TOKEN")}'}).json()
-                  description = r_info.get('description', 'No description provided.')
+                  r_info = requests.get(
+                      api_url,
+                      headers={'Authorization': f'token {os.getenv("GITHUB_TOKEN")}'}
+                  ).json()
 
-              # --- Local Markdown projects ---
+                  description = r_info.get('description', description)
+                  pushed = r_info.get('pushed_at')  # ISO
+                  if pushed:
+                      last_updated = human_date(pushed)
+
+              # --- Local markdown project ---
               elif 'file' in proj:
                   local_file = proj['file']
                   filename = os.path.basename(local_file)
@@ -84,27 +104,38 @@ jobs:
                       os.system(f"cp {local_file} docs/projects/{filename}")
                   else:
                       print(f"⚠️ Local file not found: {local_file}")
-                  description = proj.get('description', description)
+
+                  # Use manual last_updated if provided
+                  if last_updated:
+                      last_updated = human_date(last_updated)
+                  else:
+                      last_updated = "Unknown"
 
               else:
                   print(f"⚠️ Skipping {name}: no repo or file specified")
                   continue
 
-              # Add to nav and landing page
-              project_nav.append({name: f"projects/{filename}"})
-              landing_lines.append(textwrap.dedent(f"""
+              # Build landing page block
+              block = f"""
               ## [{name}](projects/{filename})
 
               {description}
 
-              ---
-              """))
+              **Status:** {status}  
+              **Last Updated:** {last_updated}
 
-          # Write projects_nav.yml for mkdocs.yml include
+              ---
+              """
+
+              landing_lines.append(textwrap.dedent(block))
+              project_nav.append({name: f"projects/{filename}"})
+
+
+          # Write navigation (not used now but kept for consistency)
           with open('projects_nav.yml', 'w', encoding='utf-8') as navfile:
               yaml.dump(project_nav, navfile, sort_keys=False, allow_unicode=True)
 
-          # Write projects landing page
+          # Write landing page
           with open('docs/projects.md', 'w', encoding='utf-8') as landing:
               landing.write('\n'.join(landing_lines))
 

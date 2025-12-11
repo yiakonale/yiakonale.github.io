@@ -5,19 +5,28 @@ projects:
   - name: "High Speed Photography V1"
     repo: "yiakonale/high-speed-photography-v1"
     branch: "main"
-    
+    status: "Complete"              # optional
+    # last_updated auto-fetched
+
   - name: "Ultrasonic Levitator"
     repo: "yiakonale/ultrasonic-levitator"
     branch: "main"
-    
+    status: "In Progress"
+
   - name: "PCB Designs"
-    file: docs/projects/pcb.md   # Local markdown file
+    file: docs/projects/pcb.md
     description: "Current and past PCB designs"
-    
+    status: "Active"
+    last_updated: "2025-01-03"       # optional, manual
+
   - name: "Portable Canine Silencer"
-    file: docs/projects/dog_whistle.md   # Local markdown file
+    file: docs/projects/dog_whistle.md
     description: "A silent fix to a loud problem"
-    
+    status: "On Hold"
+    last_updated: "2024-12-28"
+
   - name: "Leidenfrost Maze"
-    file: docs/projects/leidenfrost.md   # Local markdown file
+    file: docs/projects/leidenfrost.md
     description: "Watch water solve a maze with the Leidenfrost effect"
+    status: "Complete"
+    last_updated: "2024-12-10"

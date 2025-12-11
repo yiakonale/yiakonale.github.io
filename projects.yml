@@ -14,6 +14,10 @@ projects:
     file: docs/projects/pcb.md   # Local markdown file
     description: "Current and past PCB designs"
     
+  - name: "Portable Canine Silencer"
+    file: docs/projects/dog_whistle.md   # Local markdown file
+    description: "A silent fix to a loud problem"
+    
   - name: "Leidenfrost Maze"
     file: docs/projects/leidenfrost.md   # Local markdown file
     description: "Watch water solve a maze with the Leidenfrost effect"

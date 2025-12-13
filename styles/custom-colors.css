@@ -40,14 +40,18 @@ img[style*="float: right"] {
 }
 
 /* -----------------------------------------
-   Project index metadata (FINAL FIX)
+   Project index metadata (MATCH PAGE TITLE)
 ------------------------------------------ */
 
 .md-typeset p.project-meta {
-  color: red !important;
+  color: var(--md-typeset-color) !important;
   font-size: 0.85rem;
 }
 
+.md-typeset p.project-meta strong {
+  color: var(--md-typeset-color) !important;
+  font-weight: 600;
+}
 
 
 /* -----------------------------------------

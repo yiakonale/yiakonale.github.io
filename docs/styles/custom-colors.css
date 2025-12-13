@@ -44,14 +44,10 @@ img[style*="float: right"] {
 ------------------------------------------ */
 
 .md-typeset p.project-meta {
-  color: var(--md-typeset-h-color) !important;
+  color: red !important;
   font-size: 0.85rem;
 }
 
-.md-typeset p.project-meta strong {
-  color: var(--md-typeset-h-color) !important;
-  font-weight: 600;
-}
 
 
 /* -----------------------------------------

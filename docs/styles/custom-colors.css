@@ -40,19 +40,19 @@ img[style*="float: right"] {
 }
 
 /* -----------------------------------------
-   Project index metadata (future-proof)
-   ----------------------------------------- */
+   Project index metadata (FINAL FIX)
+------------------------------------------ */
 
-.project-meta {
-  color: var(--md-default-fg-color--dark); /* SAME as page titles */
+.md-typeset p.project-meta {
+  color: var(--md-typeset-h-color) !important;
   font-size: 0.85rem;
-  margin-top: 0.2rem;
 }
 
-.project-meta strong {
-  color: var(--md-default-fg-color--dark);
+.md-typeset p.project-meta strong {
+  color: var(--md-typeset-h-color) !important;
   font-weight: 600;
 }
+
 
 /* -----------------------------------------
    Legacy / commented float rules

@@ -1,11 +1,10 @@
 /* --- Custom dark theme colors --- */
 [data-md-color-scheme="slate"] {
   --md-default-bg-color: #232426;       /* Background */
-  --md-default-fg-color: #cccccc;       /* Text */
-  --md-primary-fg-color: #ffa200;       /* Main accent (headers, buttons) */
-  --md-accent-fg-color: #ffa200;        /* Accent (links, highlights) */
+  --md-default-fg-color: #cccccc;       /* Body text */
+  --md-primary-fg-color: #ffa200;       /* Accent */
+  --md-accent-fg-color: #ffa200;
 
-  /* Optional subtle tweaks for contrast */
   --md-code-bg-color: #2c2d2f;
   --md-code-fg-color: #ffbb33;
   --md-footer-bg-color: #1f2022;
@@ -18,12 +17,11 @@
 }
 
 [data-md-color-scheme="default"] {
-  --md-default-bg-color: #fdfaf6;        /* Warm off-white background */
-  --md-default-fg-color: #222222;        /* Deep neutral text */
-  --md-primary-fg-color: #ffa200;        /* Warm orange accent */
+  --md-default-bg-color: #fdfaf6;
+  --md-default-fg-color: #222222;
+  --md-primary-fg-color: #ffa200;
   --md-accent-fg-color: #ffa200;
-  
-  /* Subtle contrast tones */
+
   --md-code-bg-color: #f4efe9;
   --md-code-fg-color: #d17f00;
   --md-footer-bg-color: #f1ede9;
@@ -35,32 +33,32 @@
   color: #b56c00;
 }
 
+/* Images floated right */
 img[style*="float: right"] {
   max-width: 40%;
   height: auto;
 }
 
-/* -------------------------------
-   Project index metadata styling
-   (Status + Last updated)
--------------------------------- */
+/* -----------------------------------------
+   Project index metadata (future-proof)
+   ----------------------------------------- */
 
 .project-meta {
-  color: var(--md-default-fg-color--dark);
+  color: var(--md-default-fg-color--dark); /* SAME as page titles */
   font-size: 0.85rem;
-  margin-top: 0.25rem;
+  margin-top: 0.2rem;
 }
 
 .project-meta strong {
   color: var(--md-default-fg-color--dark);
+  font-weight: 600;
 }
 
-
-/* -------------------------------
+/* -----------------------------------------
    Legacy / commented float rules
--------------------------------- */
+----------------------------------------- */
 
-/* Default: image floats right on desktop 
+/*
 .float-right {
   float: right;
   clear: right;
@@ -71,7 +69,7 @@ img[style*="float: right"] {
 }
 */
 
-/* On small screens, remove float and expand
+/*
 @media screen and (max-width: 768px) {
   .float-right {
     float: none;

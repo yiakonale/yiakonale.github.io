@@ -35,40 +35,35 @@ jobs:
           import yaml, os, requests, textwrap
           from datetime import datetime
 
-          def human_date(iso):
-            """Convert ISO datetime '2025-01-15T14:22:33Z' -> 'January 15, 2025'"""
-            try:
-              dt = datetime.fromisoformat(iso.replace("Z", "+00:00"))
-              return dt.strftime("%B %d, %Y")
-            except:
-              return iso
-
           os.makedirs('docs/projects', exist_ok=True)
 
           with open('projects.yml', 'r') as f:
               cfg = yaml.safe_load(f)
 
-          project_nav = []
           landing_lines = ["# Projects\n"]
+
+          def fmt_date(iso):
+              try:
+                  return datetime.fromisoformat(iso.replace("Z", "")).strftime("%B %d, %Y")
+              except Exception:
+                  return iso
 
           for proj in cfg.get('projects', []):
               name = proj.get('name', 'Unnamed Project')
-              filename = None
-              description = proj.get('description', 'No description provided.')
+              description = "No description provided."
               status = proj.get('status', 'Unknown')
-              last_updated = proj.get('last_updated', None)
+              last_updated = proj.get('last_updated')
 
               # --- Repo-based projects ---
               if 'repo' in proj:
                   repo = proj['repo']
                   branch = proj.get('branch', 'main')
                   filename = repo.split('/')[-1] + '.md'
-                  print(f"Fetching {repo}...")
 
                   # Fetch README
-                  url = f"https://raw.githubusercontent.com/{repo}/{branch}/README.md"
+                  readme_url = f"https://raw.githubusercontent.com/{repo}/{branch}/README.md"
                   r_readme = requests.get(
-                      url,
+                      readme_url,
                       headers={'Authorization': f'token {os.getenv("GITHUB_TOKEN")}'}
                   ).text
 
@@ -84,7 +79,7 @@ jobs:
                       with open(f'docs/projects/{filename}', 'w', encoding='utf-8') as out:
                           out.write(r_readme)
 
-                  # Repo metadata (description + last updated)
+                  # GitHub metadata
                   api_url = f"https://api.github.com/repos/{repo}"
                   r_info = requests.get(
                       api_url,
@@ -92,50 +87,35 @@ jobs:
                   ).json()
 
                   description = r_info.get('description', description)
-                  pushed = r_info.get('pushed_at')  # ISO
-                  if pushed:
-                      last_updated = human_date(pushed)
+                  last_updated = fmt_date(r_info.get('pushed_at', ''))
 
-              # --- Local markdown project ---
+              # --- Local Markdown projects ---
               elif 'file' in proj:
                   local_file = proj['file']
                   filename = os.path.basename(local_file)
+
                   if os.path.exists(local_file):
                       os.system(f"cp {local_file} docs/projects/{filename}")
-                  else:
-                      print(f"⚠️ Local file not found: {local_file}")
 
-                  # Use manual last_updated if provided
-                  if last_updated:
-                      last_updated = human_date(last_updated)
-                  else:
-                      last_updated = "Unknown"
+                  description = proj.get('description', description)
+                  last_updated = fmt_date(last_updated) if last_updated else "—"
 
               else:
-                  print(f"⚠️ Skipping {name}: no repo or file specified")
                   continue
 
-              # Build landing page block
-              block = f"""
+              landing_lines.append(textwrap.dedent(f"""
               ## [{name}](projects/{filename})
 
               {description}
 
-              **Status:** {status}  
-              **Last Updated:** {last_updated}
+              <p class="project-meta">
+              <strong>Status:</strong> {status}<br>
+              <strong>Last Updated:</strong> {last_updated}
+              </p>
 
               ---
-              """
+              """))
 
-              landing_lines.append(textwrap.dedent(block))
-              project_nav.append({name: f"projects/{filename}"})
-
-
-          # Write navigation (not used now but kept for consistency)
-          with open('projects_nav.yml', 'w', encoding='utf-8') as navfile:
-              yaml.dump(project_nav, navfile, sort_keys=False, allow_unicode=True)
-
-          # Write landing page
           with open('docs/projects.md', 'w', encoding='utf-8') as landing:
               landing.write('\n'.join(landing_lines))
 

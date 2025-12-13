@@ -45,22 +45,16 @@ img[style*="float: right"] {
    (Status + Last updated)
 -------------------------------- */
 
-/* Matches page title text color */
 .project-meta {
-  color: var(--md-default-fg-color);
+  color: var(--md-default-fg-color--dark);
   font-size: 0.85rem;
   margin-top: 0.25rem;
 }
 
-/* Ensure labels stay same color (no light gray) */
 .project-meta strong {
-  color: var(--md-default-fg-color);
+  color: var(--md-default-fg-color--dark);
 }
 
-/* Optional: very subtle hierarchy without light gray */
-.project-meta {
-  opacity: 0.9;
-}
 
 /* -------------------------------
    Legacy / commented float rules

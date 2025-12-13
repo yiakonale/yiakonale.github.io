@@ -40,6 +40,32 @@ img[style*="float: right"] {
   height: auto;
 }
 
+/* -------------------------------
+   Project index metadata styling
+   (Status + Last updated)
+-------------------------------- */
+
+/* Matches page title text color */
+.project-meta {
+  color: var(--md-default-fg-color);
+  font-size: 0.85rem;
+  margin-top: 0.25rem;
+}
+
+/* Ensure labels stay same color (no light gray) */
+.project-meta strong {
+  color: var(--md-default-fg-color);
+}
+
+/* Optional: very subtle hierarchy without light gray */
+.project-meta {
+  opacity: 0.9;
+}
+
+/* -------------------------------
+   Legacy / commented float rules
+-------------------------------- */
+
 /* Default: image floats right on desktop 
 .float-right {
   float: right;
@@ -50,6 +76,7 @@ img[style*="float: right"] {
   text-align: center;
 }
 */
+
 /* On small screens, remove float and expand
 @media screen and (max-width: 768px) {
   .float-right {

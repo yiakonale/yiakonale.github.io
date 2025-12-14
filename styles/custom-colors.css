@@ -1,8 +1,8 @@
 /* --- Custom dark theme colors --- */
 [data-md-color-scheme="slate"] {
-  --md-default-bg-color: #232426;       /* Background */
-  --md-default-fg-color: #cccccc;       /* Body text */
-  --md-primary-fg-color: #ffa200;       /* Accent */
+  --md-default-bg-color: #232426;
+  --md-default-fg-color: #cccccc;
+  --md-primary-fg-color: #ffa200;
   --md-accent-fg-color: #ffa200;
 
   --md-code-bg-color: #2c2d2f;
@@ -11,7 +11,6 @@
   --md-typeset-a-color: #ffa200;
 }
 
-/* Optional: make links a bit lighter on hover */
 [data-md-color-scheme="slate"] a:hover {
   color: #ffb733;
 }
@@ -28,56 +27,29 @@
   --md-typeset-a-color: #e08900;
 }
 
-/* Hover tweak for links in light mode */
 [data-md-color-scheme="default"] a:hover {
   color: #b56c00;
 }
 
-/* Images floated right */
-img[style*="float: right"] {
-  max-width: 40%;
-  height: auto;
-}
+/* ===============================
+   PROJECT METADATA
+   =============================== */
 
-/* -----------------------------------------
-   Project metadata — match page title color
------------------------------------------- */
-
+/* Opt out of Material opacity + force page-title tone */
 .md-typeset .project-meta {
-  color: var(--md-typeset-color);
-  opacity: 1;              /* allow Material's alpha to do its job */
+  color: #8d8f94 !important;
+  opacity: 1 !important;
   font-size: 0.85rem;
+  margin-top: 0.25rem;
 }
 
+/* Prevent <strong> from re-lightening text */
 .md-typeset .project-meta strong {
-  color: inherit;
-  font-weight: 600;
+  color: inherit !important;
+  font-weight: 500;
 }
 
-
-
-/* -----------------------------------------
-   Legacy / commented float rules
------------------------------------------ */
-
-/*
-.float-right {
-  float: right;
-  clear: right;
-  width: 350px;
-  margin-left: 40px;
-  margin-bottom: 15px;
-  text-align: center;
+/* Optional: tighten spacing */
+.md-typeset .project-meta br {
+  line-height: 1.2;
 }
-*/
-
-/*
-@media screen and (max-width: 768px) {
-  .float-right {
-    float: none;
-    display: block;
-    width: 100%;
-    margin: 20px 0;
-  }
-}
-*/

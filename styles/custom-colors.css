@@ -35,21 +35,22 @@
    PROJECT METADATA
    =============================== */
 
-/* Opt out of Material opacity + force page-title tone */
 .md-typeset .project-meta {
-  color: #8d8f94 !important;
-  opacity: 1 !important;
+  color: var(--md-default-fg-color--light);
+  opacity: 1;
   font-size: 0.85rem;
   margin-top: 0.25rem;
 }
 
-/* Prevent <strong> from re-lightening text */
 .md-typeset .project-meta strong {
-  color: inherit !important;
-  font-weight: 500;
+  color: inherit;
+  font-weight: 600;
 }
 
+
 /* Optional: tighten spacing */
+/*
 .md-typeset .project-meta br {
   line-height: 1.2;
 }
+*/

@@ -5,28 +5,28 @@ projects:
   - name: "High Speed Photography V1"
     repo: "yiakonale/high-speed-photography-v1"
     branch: "main"
-    status: "Testing"              # optional
+    status: "Testing - Page under Construction"              # optional
     # last_updated auto-fetched
 
   - name: "Ultrasonic Levitator"
     repo: "yiakonale/ultrasonic-levitator"
     branch: "main"
-    status: "Complete"
+    status: "Complete - Page under Construction"
 
   - name: "PCB Designs"
     file: docs/projects/pcb.md
     description: "Current and past PCB designs"
-    status: "Active"
+    status: "Active - Page under Construction"
     last_updated: "2025-12-10"       # optional, manual
 
   - name: "Portable Canine Silencer"
     file: docs/projects/dog_whistle.md
     description: "A silent fix to a loud problem"
-    status: "Complete"
+    status: "Complete - Page under Construction"
     last_updated: "2025-12-10"
 
   - name: "Leidenfrost Maze"
     file: docs/projects/leidenfrost.md
     description: "Watch water solve a maze with the Leidenfrost effect"
-    status: "Complete"
-    last_updated: "2024-12-10"
+    status: "Complete - Page under Construction"
+    last_updated: "2025-12-14"
